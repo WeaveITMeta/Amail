@@ -1,0 +1,55 @@
+# =============================================================================
+# AMAIL-P2P - Peer-to-Peer Mail Data Transfer
+# =============================================================================
+# Table of Contents:
+# 1. Package Metadata
+# 2. Dependencies (libp2p, tokio, crypto)
+# =============================================================================
+
+[package]
+name = "amail-p2p"
+version.workspace = true
+edition.workspace = true
+description = "P2P mail data transfer with torrent-style chunking - no size limits"
+
+[dependencies]
+# Core
+tokio = { workspace = true, features = ["full"] }
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+tracing.workspace = true
+futures.workspace = true
+async-trait.workspace = true
+
+# P2P Networking
+libp2p = { version = "0.53", features = [
+    "tokio",
+    "tcp",
+    "noise",
+    "yamux",
+    "kad",
+    "identify",
+    "mdns",
+    "request-response",
+    "macros",
+    "cbor",
+] }
+
+# Crypto & Hashing
+sha2 = "0.10"
+blake3 = "1.5"
+base64.workspace = true
+
+# File handling
+tokio-util = { version = "0.7", features = ["io"] }
+bytes = "1.5"
+
+# Serialization
+serde_cbor = "0.11"
+serde_bytes = "0.11"
+urlencoding = "2.1"
+mime_guess = "2.0"

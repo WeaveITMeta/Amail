@@ -1,0 +1,109 @@
+# =============================================================================
+# AMAIL Docker Compose - Development Stack
+# =============================================================================
+# Table of Contents:
+# 1. Stalwart Mail Server
+# 2. Ollama LLM
+# 3. PostgreSQL Database
+# 4. Redis Queue
+# 5. Amail Server
+# =============================================================================
+
+version: '3.8'
+
+services:
+  # ===========================================================================
+  # Stalwart Mail Server
+  # ===========================================================================
+  stalwart:
+    image: stalwartlabs/stalwart:latest
+    container_name: amail-stalwart
+    ports:
+      - "25:25"      # SMTP
+      - "587:587"    # SMTP Submission
+      - "993:993"    # IMAPS
+      - "4040:8080"  # HTTP API
+    volumes:
+      - stalwart_data:/opt/stalwart
+    environment:
+      - STALWART_ADMIN_PASSWORD=admin
+    restart: unless-stopped
+
+  # ===========================================================================
+  # Ollama LLM Server
+  # ===========================================================================
+  ollama:
+    image: ollama/ollama:latest
+    container_name: amail-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    # Uncomment for GPU support (NVIDIA)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    restart: unless-stopped
+
+  # ===========================================================================
+  # PostgreSQL Database
+  # ===========================================================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: amail-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: amail
+      POSTGRES_PASSWORD: amail_password
+      POSTGRES_DB: amail
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  # ===========================================================================
+  # Redis Queue
+  # ===========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: amail-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+
+  # ===========================================================================
+  # Amail Server (build from source)
+  # ===========================================================================
+  # amail:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: amail-server
+  #   ports:
+  #     - "4000:4000"
+  #   environment:
+  #     - HOST=0.0.0.0
+  #     - PORT=4000
+  #     - STALWART_URL=http://stalwart:4040
+  #     - OLLAMA_URL=http://ollama:11434
+  #     - DATABASE_URL=postgres://amail:amail_password@postgres:5432/amail
+  #     - REDIS_URL=redis://redis:6379
+  #   depends_on:
+  #     - stalwart
+  #     - ollama
+  #     - postgres
+  #     - redis
+  #   restart: unless-stopped
+
+volumes:
+  stalwart_data:
+  ollama_data:
+  postgres_data:
+  redis_data:

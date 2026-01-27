@@ -1,0 +1,3 @@
+[submodule "vendor/stalwart"]
+	path = vendor/stalwart
+	url = https://github.com/stalwartlabs/mail-server.git

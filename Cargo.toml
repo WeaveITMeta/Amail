@@ -1,0 +1,156 @@
+# =============================================================================
+# AMAIL - Email-Triggered AI Agent Swarm
+# =============================================================================
+# Table of Contents:
+# 1. Workspace Configuration
+# 2. Package Metadata
+# 3. Features
+# 4. Dependencies (Core, Actix, LLM, Database, Observability)
+# 5. Dev Dependencies
+# 6. Binary Targets
+# =============================================================================
+
+[workspace]
+resolver = "2"
+members = [
+    "crates/amail-core",
+    "crates/amail-agents",
+    "crates/amail-webhook",
+    "crates/amail-llm",
+    "crates/amail-mcp",
+    "crates/amail-mail",
+    "crates/amail-p2p",
+]
+# Web and Embed are excluded because they target wasm32 and use different dependencies
+# Stalwart is excluded because it's a git submodule with its own workspace
+exclude = ["crates/amail-web", "crates/amail-embed", "vendor/stalwart"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Amail Team"]
+license = "MIT"
+repository = "https://github.com/amail/amail"
+description = "Email-triggered AI agent swarm with A2A protocol support"
+
+[workspace.dependencies]
+# =============================================================================
+# Core Dependencies
+# =============================================================================
+tokio = { version = "1.42", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+thiserror = "1.0"
+uuid = { version = "1.11", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+async-trait = "0.1"
+futures = "0.3"
+
+# =============================================================================
+# Actix Actor System & Web Framework
+# =============================================================================
+actix = "0.13"
+actix-web = "4.11"
+actix-rt = "2.11"
+actix-cors = "0.7"
+
+# =============================================================================
+# LLM & AI Integration
+# =============================================================================
+reqwest = { version = "0.11", features = ["json", "rustls-tls"] }
+ollama-rs = "0.2"
+
+# =============================================================================
+# Email Parsing & Sending
+# =============================================================================
+mail-parser = "0.9"
+lettre = { version = "0.11", features = ["tokio1", "tokio1-native-tls", "smtp-transport", "builder"] }
+mail-builder = "0.3"
+
+# =============================================================================
+# Database & Queue
+# =============================================================================
+sqlx = { version = "0.8", features = ["runtime-tokio", "postgres", "chrono", "uuid", "json"] }
+redis = { version = "0.24", features = ["tokio-comp", "connection-manager"] }
+deadpool-postgres = "0.14"
+
+# =============================================================================
+# Observability
+# =============================================================================
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+opentelemetry = "0.21"
+prometheus = "0.13"
+
+# =============================================================================
+# Security
+# =============================================================================
+hmac = "0.12"
+sha2 = "0.10"
+base64 = "0.22"
+hex = "0.4"
+
+# =============================================================================
+# Configuration
+# =============================================================================
+config = { version = "0.14", features = ["toml"] }
+dotenv = "0.15"
+clap = { version = "4.5", features = ["derive", "env"] }
+
+# =============================================================================
+# Internal Crates
+# =============================================================================
+amail-core = { path = "crates/amail-core" }
+amail-agents = { path = "crates/amail-agents" }
+amail-webhook = { path = "crates/amail-webhook" }
+amail-llm = { path = "crates/amail-llm" }
+amail-mcp = { path = "crates/amail-mcp" }
+amail-mail = { path = "crates/amail-mail" }
+
+# =============================================================================
+# External Integrations (SpatialVortex)
+# Note: SpatialVortex integration is handled at the binary level, not workspace
+# =============================================================================
+
+[package]
+name = "amail"
+version.workspace = true
+edition.workspace = true
+description = "Email-triggered AI agent swarm - main binary"
+
+[features]
+default = ["postgres", "redis"]
+postgres = []
+redis = []
+full = ["postgres", "redis"]
+
+[dependencies]
+amail-core.workspace = true
+amail-agents.workspace = true
+amail-webhook.workspace = true
+amail-llm.workspace = true
+amail-mcp.workspace = true
+amail-mail.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+config.workspace = true
+dotenv.workspace = true
+clap.workspace = true
+anyhow.workspace = true
+actix.workspace = true
+actix-web.workspace = true
+actix-cors.workspace = true
+chrono.workspace = true
+
+[dev-dependencies]
+uuid.workspace = true
+
+[[bin]]
+name = "amail-server"
+path = "src/main.rs"
+
+[[bin]]
+name = "amail-worker"
+path = "src/worker.rs"

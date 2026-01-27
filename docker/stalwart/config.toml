@@ -1,0 +1,123 @@
+# =============================================================================
+# Stalwart Mail Server Configuration for Amail
+# =============================================================================
+# This configuration sets up Stalwart with webhook support for Amail
+# =============================================================================
+
+[server]
+hostname = "localhost"
+max-connections = 1024
+
+# =============================================================================
+# Listeners
+# =============================================================================
+
+[server.listener.smtp]
+bind = ["0.0.0.0:25"]
+protocol = "smtp"
+
+[server.listener.submission]
+bind = ["0.0.0.0:587"]
+protocol = "smtp"
+tls.implicit = false
+
+[server.listener.submissions]
+bind = ["0.0.0.0:465"]
+protocol = "smtp"
+tls.implicit = true
+
+[server.listener.imap]
+bind = ["0.0.0.0:143"]
+protocol = "imap"
+
+[server.listener.imaps]
+bind = ["0.0.0.0:993"]
+protocol = "imap"
+tls.implicit = true
+
+[server.listener.http]
+bind = ["0.0.0.0:8080"]
+protocol = "http"
+
+# =============================================================================
+# Storage
+# =============================================================================
+
+[storage]
+data = "rocksdb"
+blob = "rocksdb"
+fts = "rocksdb"
+lookup = "rocksdb"
+directory = "internal"
+
+[store.rocksdb]
+type = "rocksdb"
+path = "/opt/stalwart-mail/data"
+
+# =============================================================================
+# Directory (User Management)
+# =============================================================================
+
+[directory.internal]
+type = "internal"
+store = "rocksdb"
+
+# =============================================================================
+# Authentication
+# =============================================================================
+
+[authentication]
+fallback-admin.user = "admin"
+fallback-admin.secret = "%{env:STALWART_ADMIN_PASS}%"
+
+[session.auth]
+mechanisms = ["PLAIN", "LOGIN"]
+require = true
+
+# =============================================================================
+# Webhook Configuration for Amail
+# =============================================================================
+# Triggers HTTP POST to Amail when emails are received
+
+[webhook.amail]
+url = "http://host.docker.internal:4000/api/v1/webhook/stalwart"
+events = ["message-ingest"]
+# Optional: Add signature for verification
+# secret = "%{env:WEBHOOK_SECRET}%"
+
+# Webhook payload format
+[webhook.amail.headers]
+Content-Type = "application/json"
+
+# =============================================================================
+# SMTP Settings
+# =============================================================================
+
+[session.rcpt]
+max-recipients = 100
+
+[session.data]
+max-message-size = 104857600  # 100MB
+
+[queue]
+path = "/opt/stalwart-mail/queue"
+
+[queue.outbound]
+next-hop = []
+
+# =============================================================================
+# Spam & Security (Basic)
+# =============================================================================
+
+[spam]
+enabled = false  # Disable for development
+
+[dkim]
+sign = false  # Disable for development
+
+# =============================================================================
+# Logging
+# =============================================================================
+
+[tracing]
+level = "info"

@@ -1,0 +1,43 @@
+# =============================================================================
+# AMAIL-WEBHOOK - Stalwart Webhook Receiver & HTTP API
+# =============================================================================
+# Table of Contents:
+# 1. Package Metadata
+# 2. Dependencies (Actix-Web, Security, Email Parsing)
+# =============================================================================
+
+[package]
+name = "amail-webhook"
+version.workspace = true
+edition.workspace = true
+description = "Stalwart webhook receiver and HTTP API for Amail"
+
+[dependencies]
+amail-core.workspace = true
+amail-agents.workspace = true
+amail-p2p = { path = "../amail-p2p" }
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+sqlx.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+tracing.workspace = true
+actix.workspace = true
+actix-web.workspace = true
+actix-rt.workspace = true
+actix-cors.workspace = true
+hmac.workspace = true
+sha2.workspace = true
+base64.workspace = true
+hex.workspace = true
+mail-parser.workspace = true
+reqwest.workspace = true
+lettre.workspace = true
+mail-builder.workspace = true
+actix-web-actors = "4.3"
+hickory-resolver = "0.24"

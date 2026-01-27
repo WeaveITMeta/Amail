@@ -1,0 +1,28 @@
+# =============================================================================
+# AMAIL-LLM - LLM Integration (Ollama, Mistral, Tool Calling)
+# =============================================================================
+# Table of Contents:
+# 1. Package Metadata
+# 2. Dependencies (Ollama, HTTP, Async)
+# =============================================================================
+
+[package]
+name = "amail-llm"
+version.workspace = true
+edition.workspace = true
+description = "LLM integration for Amail agents - Ollama, Mistral, tool calling"
+
+[dependencies]
+amail-core.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+tracing.workspace = true
+reqwest.workspace = true
+ollama-rs.workspace = true

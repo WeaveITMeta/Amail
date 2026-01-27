@@ -1,0 +1,68 @@
+{
+  "version": "1.0.0",
+  "updated_at": null,
+  "spam": {
+    "enabled": true,
+    "spam_threshold": 50,
+    "quarantine_threshold": 80,
+    "reject_threshold": 95,
+    "check_spf": true,
+    "check_dkim": true,
+    "check_dmarc": true,
+    "blocked_domains": [],
+    "blocked_addresses": [],
+    "allowed_domains": [],
+    "allowed_addresses": []
+  },
+  "rate_limiting": {
+    "enabled": true,
+    "login_attempts": {
+      "max_attempts": 5,
+      "lockout_minutes": 15
+    },
+    "api_requests": {
+      "max_per_minute": 60,
+      "max_per_hour": 1000
+    },
+    "email_sending": {
+      "max_per_minute": 10,
+      "max_per_hour": 100
+    }
+  },
+  "auto_reply_prevention": {
+    "enabled": true,
+    "block_noreply": true,
+    "block_mailer_daemon": true,
+    "block_automated_headers": true,
+    "block_mailing_lists": true,
+    "blocked_sender_patterns": [
+      "noreply@",
+      "no-reply@",
+      "donotreply@",
+      "mailer-daemon@",
+      "postmaster@",
+      "bounce@",
+      "notifications@"
+    ],
+    "blocked_domains": [
+      "sendgrid.net",
+      "mailchimp.com",
+      "amazonses.com",
+      "mailgun.org"
+    ]
+  },
+  "content_filtering": {
+    "enabled": true,
+    "max_attachment_size_mb": 25,
+    "blocked_extensions": [".exe", ".bat", ".cmd", ".scr", ".pif", ".js", ".vbs"],
+    "scan_attachments": true,
+    "strip_dangerous_html": true
+  },
+  "audit": {
+    "enabled": true,
+    "log_logins": true,
+    "log_email_access": true,
+    "log_config_changes": true,
+    "retention_days": 90
+  }
+}

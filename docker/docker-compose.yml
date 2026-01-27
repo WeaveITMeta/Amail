@@ -1,0 +1,74 @@
+# =============================================================================
+# Amail Docker Compose - Development Stack
+# =============================================================================
+# Includes: Stalwart Mail Server, PostgreSQL, Redis
+# Run with: docker-compose up -d
+# =============================================================================
+
+version: '3.8'
+
+services:
+  # ===========================================================================
+  # Stalwart Mail Server
+  # ===========================================================================
+  stalwart:
+    image: stalwartlabs/mail-server:latest
+    container_name: amail-stalwart
+    ports:
+      - "25:25"      # SMTP
+      - "587:587"    # SMTP Submission
+      - "465:465"    # SMTPS
+      - "143:143"    # IMAP
+      - "993:993"    # IMAPS
+      - "4040:8080"  # REST API / Web Admin
+    volumes:
+      - stalwart-data:/opt/stalwart-mail
+      - ./stalwart/config.toml:/opt/stalwart-mail/etc/config.toml:ro
+    environment:
+      - STALWART_ADMIN_USER=${STALWART_ADMIN_USER:-admin}
+      - STALWART_ADMIN_PASS=${STALWART_ADMIN_PASS:-admin123}
+    restart: unless-stopped
+    networks:
+      - amail-network
+
+  # ===========================================================================
+  # PostgreSQL Database
+  # ===========================================================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: amail-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: amail
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-amail_dev_password}
+      POSTGRES_DB: amail
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - amail-network
+
+  # ===========================================================================
+  # Redis Cache/Queue
+  # ===========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: amail-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    networks:
+      - amail-network
+
+volumes:
+  stalwart-data:
+  postgres-data:
+  redis-data:
+
+networks:
+  amail-network:
+    driver: bridge

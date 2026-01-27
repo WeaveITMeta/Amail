@@ -1,0 +1,53 @@
+#############################################
+# Amail Stalwart Configuration
+# Pre-configured for zero-setup operation
+#############################################
+
+[server.listener."smtp"]
+bind = ["[::]:2525"]
+protocol = "smtp"
+
+[server.listener."submission"]
+bind = ["[::]:587"]
+protocol = "smtp"
+
+[server.listener."imap"]
+bind = ["[::]:143"]
+protocol = "imap"
+
+[server.listener."http"]
+protocol = "http"
+bind = ["[::]:4040"]
+
+[storage]
+data = "rocksdb"
+fts = "rocksdb"
+blob = "rocksdb"
+lookup = "rocksdb"
+directory = "internal"
+
+[store."rocksdb"]
+type = "rocksdb"
+path = "./data/stalwart/db"
+compression = "lz4"
+
+[directory."internal"]
+type = "internal"
+store = "rocksdb"
+
+[tracer."stdout"]
+type = "stdout"
+level = "info"
+ansi = false
+enable = true
+
+# Default admin credentials for Amail integration
+# No external API key needed - uses internal auth
+[authentication.fallback-admin]
+user = "admin"
+secret = "amail-internal-secret"
+
+# Webhook to notify Amail of incoming emails
+[webhook."amail"]
+url = "http://localhost:4000/api/v1/webhook"
+events = ["message.inbound"]

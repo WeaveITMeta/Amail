@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "updated_at": null,
+  "inbound": {
+    "enabled": true,
+    "port": 25,
+    "tls_required": false,
+    "max_message_size_mb": 50,
+    "max_recipients": 100,
+    "greeting": "Amail ESMTP Server",
+    "timeout_seconds": 300
+  },
+  "outbound": {
+    "enabled": true,
+    "port": 587,
+    "tls_required": true,
+    "relay": {
+      "enabled": false,
+      "host": null,
+      "port": 587,
+      "username": null,
+      "password": null,
+      "auth_method": "plain"
+    },
+    "rate_limit": {
+      "enabled": true,
+      "max_per_hour": 500,
+      "max_per_day": 5000
+    },
+    "retry": {
+      "max_attempts": 5,
+      "initial_delay_seconds": 300,
+      "max_delay_seconds": 86400
+    }
+  },
+  "authentication": {
+    "require_auth": true,
+    "allowed_methods": ["plain", "login"],
+    "allow_plain_without_tls": false
+  },
+  "tls": {
+    "enabled": true,
+    "certificate_path": null,
+    "private_key_path": null,
+    "auto_renew": true,
+    "provider": "letsencrypt"
+  }
+}

@@ -1,0 +1,29 @@
+# =============================================================================
+# AMAIL-AGENTS - Actix Actor-Based AI Agent Swarm
+# =============================================================================
+# Table of Contents:
+# 1. Package Metadata
+# 2. Dependencies (Actix, Core, LLM)
+# =============================================================================
+
+[package]
+name = "amail-agents"
+version.workspace = true
+edition.workspace = true
+description = "Actix actor-based AI agent swarm with A2A protocol support"
+
+[dependencies]
+amail-core.workspace = true
+amail-llm.workspace = true
+amail-mcp.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+tracing.workspace = true
+actix.workspace = true

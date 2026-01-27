@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "updated_at": null,
+  "server": {
+    "hostname": "mail.example.com",
+    "ipv4": null,
+    "ipv6": null
+  },
+  "domains": [
+    {
+      "domain_id": "example-com",
+      "domain": "example.com",
+      "records": {
+        "mx": {
+          "enabled": true,
+          "priority": 10,
+          "host": "mail.example.com",
+          "ttl": 3600
+        },
+        "spf": {
+          "enabled": true,
+          "policy": "v=spf1 mx a ip4:{server_ip} -all",
+          "ttl": 3600
+        },
+        "dkim": {
+          "enabled": true,
+          "selector": "default",
+          "public_key": null,
+          "ttl": 3600
+        },
+        "dmarc": {
+          "enabled": true,
+          "policy": "quarantine",
+          "rua": "dmarc@example.com",
+          "ruf": null,
+          "pct": 100,
+          "ttl": 3600
+        },
+        "autodiscover": {
+          "enabled": true,
+          "cname": "mail.example.com",
+          "ttl": 3600
+        }
+      },
+      "verification": {
+        "mx_verified": false,
+        "spf_verified": false,
+        "dkim_verified": false,
+        "dmarc_verified": false,
+        "last_checked": null
+      }
+    }
+  ]
+}

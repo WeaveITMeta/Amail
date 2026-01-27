@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2025-12-21T23:28:04.083749100Z",
+  "mailboxes": [
+    {
+      "id": "legal-amail-world",
+      "domain_id": "amail-world",
+      "email": "legal@amail.world",
+      "display_name": "Legal Department",
+      "enabled": true,
+      "created_at": "2025-12-21T23:27:53.224005300Z",
+      "type": "user",
+      "password_hash": null,
+      "quota_mb": 1024,
+      "settings": {
+        "auto_reply_enabled": false,
+        "auto_reply_subject": null,
+        "auto_reply_body": null,
+        "auto_reply_start": null,
+        "auto_reply_end": null,
+        "forward_to": null,
+        "forward_keep_copy": false
+      },
+      "aliases": [],
+      "ai_agent": {
+        "enabled": false,
+        "role": "",
+        "auto_respond": false,
+        "require_review": false
+      }
+    },
+    {
+      "id": "support-amail-world",
+      "domain_id": "amail-world",
+      "email": "support@amail.world",
+      "display_name": "Support",
+      "enabled": true,
+      "created_at": "2025-12-21T23:28:04.083744700Z",
+      "type": "user",
+      "password_hash": null,
+      "quota_mb": 1024,
+      "settings": {
+        "auto_reply_enabled": false,
+        "auto_reply_subject": null,
+        "auto_reply_body": null,
+        "auto_reply_start": null,
+        "auto_reply_end": null,
+        "forward_to": null,
+        "forward_keep_copy": false
+      },
+      "aliases": [],
+      "ai_agent": {
+        "enabled": false,
+        "role": "",
+        "auto_respond": false,
+        "require_review": false
+      }
+    }
+  ],
+  "aliases": [],
+  "groups": []
+}

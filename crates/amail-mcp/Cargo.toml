@@ -1,0 +1,27 @@
+# =============================================================================
+# AMAIL-MCP - Model Context Protocol Integration
+# =============================================================================
+# Table of Contents:
+# 1. Package Metadata
+# 2. Dependencies (HTTP Client, Serialization)
+# =============================================================================
+
+[package]
+name = "amail-mcp"
+version.workspace = true
+edition.workspace = true
+description = "MCP (Model Context Protocol) client for Amail agents"
+
+[dependencies]
+amail-core.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+async-trait.workspace = true
+futures.workspace = true
+tracing.workspace = true
+reqwest.workspace = true

@@ -1,0 +1,57 @@
+[package]
+name = "amail-mail"
+version = "0.1.0"
+edition = "2021"
+description = "Embedded mail server integration for Amail"
+
+[dependencies]
+# Stalwart crates (path dependencies from vendor)
+# Note: We selectively import what we need rather than the full server
+
+# Core Amail
+amail-core = { path = "../amail-core" }
+
+# Async runtime
+tokio = { version = "1.47", features = ["full"] }
+futures = "0.3"
+
+# Mail handling (already published crates)
+mail-parser = { version = "0.9", features = ["full_encoding"] }
+mail-builder = { version = "0.3" }
+smtp-proto = { version = "0.1" }
+
+# SMTP client (using lettre instead of mail-send to avoid aws-lc-sys)
+lettre = { version = "0.11", default-features = false, features = ["tokio1-rustls-tls", "smtp-transport", "builder"] }
+
+# Storage
+sqlx = { version = "0.8", features = ["runtime-tokio", "postgres", "uuid", "chrono", "json"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Logging
+tracing = "0.1"
+
+# Crypto
+ring = "0.17"
+base64 = "0.22"
+
+# Utils
+uuid = { version = "1.0", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+# DNS resolution for domain verification
+hickory-resolver = "0.24"
+
+# HTTP client for webhooks
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+
+[features]
+default = []
+# Enable full Stalwart integration (heavy)
+stalwart-full = []

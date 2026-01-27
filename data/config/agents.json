@@ -1,0 +1,71 @@
+{
+  "version": "1.0.0",
+  "updated_at": null,
+  "global": {
+    "llm": {
+      "provider": "ollama",
+      "url": "http://localhost:11434",
+      "model": "mistral:latest",
+      "timeout_seconds": 300
+    },
+    "confidence_thresholds": {
+      "auto_respond": 0.85,
+      "require_review": 0.60,
+      "escalate_human": 0.40
+    },
+    "review": {
+      "telegram_enabled": false,
+      "telegram_bot_token": null,
+      "telegram_chat_id": null,
+      "email_review_enabled": false,
+      "review_email": null
+    }
+  },
+  "domain_overrides": [
+    {
+      "domain_id": "example-com",
+      "enabled": true,
+      "auto_respond": false,
+      "require_review": true,
+      "working_hours": {
+        "enabled": false,
+        "timezone": "America/Los_Angeles",
+        "start": "08:00",
+        "end": "18:00",
+        "days": ["mon", "tue", "wed", "thu", "fri"]
+      },
+      "agent_routing": {
+        "default_agent": "receptionist",
+        "rules": [
+          {
+            "condition": "subject_contains",
+            "value": "invoice",
+            "route_to": "accountant",
+            "priority": 10
+          },
+          {
+            "condition": "subject_contains",
+            "value": "legal",
+            "route_to": "lawyer",
+            "priority": 10
+          },
+          {
+            "condition": "from_domain",
+            "value": "*.gov",
+            "route_to": "compliance",
+            "priority": 20
+          }
+        ]
+      }
+    }
+  ],
+  "mailbox_overrides": [
+    {
+      "mailbox_id": "admin-example-com",
+      "enabled": true,
+      "auto_respond": false,
+      "require_review": true,
+      "agent_role": "executive"
+    }
+  ]
+}

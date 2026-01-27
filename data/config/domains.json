@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2025-12-21T23:27:37.628239200Z",
+  "domains": [
+    {
+      "id": "amail-world",
+      "name": "amail.world",
+      "display_name": "amail.world",
+      "enabled": true,
+      "primary": false,
+      "created_at": "2025-12-21T23:25:59.934629800Z",
+      "settings": {
+        "catch_all": null,
+        "default_quota_mb": 0,
+        "max_mailboxes": null,
+        "max_aliases_per_mailbox": 0
+      },
+      "dkim": {
+        "enabled": false,
+        "selector": "",
+        "key_type": "",
+        "key_bits": 0,
+        "public_key": null,
+        "private_key_path": null,
+        "generated_at": null
+      },
+      "branding": {
+        "logo_url": null,
+        "primary_color": "",
+        "support_email": null
+      },
+      "mx_verified": true,
+      "spf_verified": true,
+      "dkim_verified": true,
+      "dmarc_verified": true,
+      "last_verified": "2025-12-21T23:27:37.628230700Z"
+    }
+  ]
+}

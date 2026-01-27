@@ -1,0 +1,29 @@
+# Rust build artifacts (all target directories in workspace)
+**/target/
+**/*.rs.bk
+
+# Environment files (keep .env.example, ignore actual .env)
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Docker volumes
+docker/volumes/
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
