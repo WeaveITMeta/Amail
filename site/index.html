@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A robot for every inbox on your domain.</title>
+  <meta name="description" content="Amail gives every company address its own AI role agent. hello@, sales@, support@, legal@: each robot triages, drafts, and waits for a human to approve. Built on Amazon SES and Cloudflare. Join the waitlist.">
+  <link rel="canonical" href="https://amail.world/">
+  <meta name="theme-color" content="#1c2340">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://amail.world/">
+  <meta property="og:title" content="A robot for every inbox on your domain.">
+  <meta property="og:description" content="Role agents for hello@, sales@, support@ and 37 more. They triage and draft. A human approves. Join the waitlist.">
+  <meta property="og:image" content="https://amail.world/img/og.jpg">
+  <meta property="og:image:alt" content="A robot for every inbox on your domain.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A robot for every inbox on your domain.">
+  <meta name="twitter:description" content="Role agents for hello@, sales@, support@ and 37 more. They triage and draft. A human approves. Join the waitlist.">
+  <meta name="twitter:image" content="https://amail.world/img/og.jpg">
+  <meta name="twitter:image:alt" content="A robot for every inbox on your domain.">
+  <link rel="icon" type="image/png" href="/img/favicon-64.png">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/img/hero.webp" imagesrcset="/img/hero-1200.webp 1200w, /img/hero.webp 2000w" imagesizes="(min-width: 1000px) 62vw, 100vw">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#join">Skip to the waitlist</a>
+
+  <header class="nav" id="top">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Amail home">
+        <img src="/img/favicon-64.png" alt="" width="36" height="36">
+        <span>Amail</span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#crew">The crew</a>
+        <a href="#how">How it works</a>
+        <a href="#safe">Safety</a>
+        <a href="/mcp">Pipelines</a>
+        <a href="#github">Open source</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="gh-pill" href="https://github.com/WeaveITMeta/Amail-Automation-Setup" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          <span>Star</span><span class="gh-stars" data-gh="stars">·</span>
+        </a>
+        <a class="btn btn-small" href="#join">Join waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> Now taking early access signups</p>
+          <h1>A robot for every inbox on your domain.</h1>
+          <p class="lede">
+            <strong>hello@</strong>, <strong>sales@</strong>, <strong>support@</strong>, <strong>legal@</strong>.
+            Amail staffs each address with its own role agent. It reads, triages, and drafts.
+            <em>You</em> approve before anything leaves the building.
+          </p>
+
+          <form class="join" data-join data-source="hero" novalidate>
+            <label class="sr" for="hero-email">Work email</label>
+            <div class="join-row">
+              <input id="hero-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required>
+              <button class="btn" type="submit"><span>Get early access</span></button>
+            </div>
+            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="join-msg" role="status" aria-live="polite"></p>
+          </form>
+          <p class="social-proof"><span class="count" data-count>Be one of the first</span> on the list. No spam; one email when your crew is ready.</p>
+        </div>
+        <figure class="hero-art">
+          <img src="/img/hero.webp"
+               srcset="/img/hero-1200.webp 1200w, /img/hero.webp 2000w"
+               sizes="(min-width: 1000px) 62vw, 100vw"
+               width="2000" height="1116"
+               alt="A team of cute envelope-headed robots working in a mail room: a receptionist with a headset, a salesperson with a briefcase, a security guard with a padlock shield, an accountant with a calculator, an engineer in a hard hat, a courier with a parcel, and a lawyer with a gavel, while glowing envelopes travel through pipes overhead.">
+        </figure>
+      </div>
+    </section>
+
+    <!-- STACK STRIP -->
+    <section class="strip" aria-label="Built on">
+      <div class="wrap strip-inner">
+        <span class="strip-label">Runs on infrastructure you already trust</span>
+        <ul>
+          <li>Amazon SES</li>
+          <li>Amazon S3</li>
+          <li>Cloudflare DNS</li>
+          <li>Cloudflare Workers</li>
+          <li>R2 artwork</li>
+          <li>Python reference gate</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CREW -->
+    <section class="section" id="crew">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">Meet the crew</p>
+          <h2>Every role gets a robot. Every robot knows its job.</h2>
+          <p>Each address loads its own role skill before it reads a single word. The receptionist routes, the lawyer logs deadlines, the courier tracks parcels. Here are 16 of the 40 roles in the open-source library.</p>
+        </header>
+
+        <ul class="crew" data-crew></ul>
+        <p class="crew-foot">Plus accessibility, billing, community, compliance, onboarding, documentation, ethics, facilities, HR, investor relations, procurement, renewals, returns, training, trust and safety, warranty, and more. <a href="https://github.com/WeaveITMeta/Amail-Automation-Setup/tree/main/Job" target="_blank" rel="noopener">Browse all 40 role skills →</a></p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section section-alt" id="how">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">How it works</p>
+          <h2>From MX record to approved reply, in six steps.</h2>
+          <p>The same reference path the open-source library documents. Durable at every hop, so a crashed worker never sends twice. Agents can also run a complete business pipeline by connecting tools over MCP, with durable records and a human quality gate at the checkpoints you configure. <a href="/mcp">Read how MCP pipelines work</a>.</p>
+        </header>
+
+        <ol class="flow">
+          <li>
+            <span class="flow-n">1</span>
+            <h3>Mail lands at SES</h3>
+            <p>Your MX points at Amazon SES inbound. Cloudflare hosts the DNS: MX, Easy DKIM, MAIL FROM, and DMARC.</p>
+            <code>MX 10 inbound-smtp.&lt;region&gt;.amazonaws.com</code>
+          </li>
+          <li>
+            <span class="flow-n">2</span>
+            <h3>Stored, not streamed</h3>
+            <p>The raw message is written to S3. The wake carries only a pointer to that object, never the body.</p>
+            <code>s3://inbound/raw/&lt;message-id&gt;</code>
+          </li>
+          <li>
+            <span class="flow-n">3</span>
+            <h3>Claimed exactly once</h3>
+            <p>An append-only handled key is written before parsing. A duplicate wake stops right there.</p>
+            <code>duplicate_ignored</code>
+          </li>
+          <li>
+            <span class="flow-n">4</span>
+            <h3>The right robot clocks in</h3>
+            <p>The recipient address picks the role. The robot loads its role skill from the catalog, then reads that one object.</p>
+            <code>Job/support/SKILL.md</code>
+          </li>
+          <li>
+            <span class="flow-n">5</span>
+            <h3>Triage, then a draft</h3>
+            <p>Every message gets an internal report. When it helps, a draft. A draft is never a send.</p>
+            <code>pending_approval</code>
+          </li>
+          <li>
+            <span class="flow-n">6</span>
+            <h3>A human says go</h3>
+            <p>You approve the exact rendered email. A separate send identity calls SES. Threading headers stay intact.</p>
+            <code>approved → ses:SendEmail</code>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SAFETY -->
+    <section class="section" id="safe">
+      <div class="wrap safe-grid">
+        <div class="safe-art">
+          <img src="/img/bot-security.webp" width="640" height="640" loading="lazy" alt="The security robot in a navy guard cap and vest, holding a shield with a padlock.">
+        </div>
+        <div>
+          <header class="section-head left">
+            <p class="eyebrow">Safe by default</p>
+            <h2>Cute robots. Serious guardrails.</h2>
+            <p>Automation that answers your customers has to be boring in exactly the right places. These defaults ship on.</p>
+          </header>
+          <ul class="checks">
+            <li><strong>Kill switch ships on.</strong> Flip it and every send path stops, including ones a person already approved.</li>
+            <li><strong>Human approval by default.</strong> Approval binds to a SHA-256 digest of the exact message. A chat that says "approved" sends nothing.</li>
+            <li><strong>Split identities.</strong> The robot can read one object. It cannot call SES send. A prompt injection has nothing to steal.</li>
+            <li><strong>Mail is data, not orders.</strong> Instructions inside an email never become policy.</li>
+            <li><strong>Suppression first.</strong> Opt-outs, bounces, tests, and no-reply senders are dropped before any draft is written.</li>
+            <li><strong>DMARC-checked replies.</strong> Replies go to the header From only when DMARC passed for it.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- GITHUB -->
+    <section class="section section-dark" id="github">
+      <div class="wrap gh-grid">
+        <div>
+          <p class="eyebrow light">Open source on GitHub</p>
+          <h2>Read the blueprint before you hire the crew.</h2>
+          <p class="muted">The whole reference architecture is public: the SES receipt path, the Cloudflare DNS records, the 40 role skills, the reply rubric, and a Python authorization gate with tests you can run today.</p>
+          <div class="gh-actions">
+            <a class="btn btn-light" href="https://github.com/WeaveITMeta/Amail-Automation-Setup" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn btn-ghost" href="https://github.com/WeaveITMeta/Amail-Automation-Setup/tree/main/Job" target="_blank" rel="noopener">Browse role skills</a>
+          </div>
+        </div>
+        <a class="repo-card" href="https://github.com/WeaveITMeta/Amail-Automation-Setup" target="_blank" rel="noopener" aria-label="WeaveITMeta/Amail-Automation-Setup on GitHub">
+          <div class="repo-top">
+            <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 11-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-8a1 1 0 00-1 1v6.708A2.486 2.486 0 014.5 9h8V1.5zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/></svg>
+            <span><span class="repo-owner">WeaveITMeta</span> / <strong>Amail-Automation-Setup</strong></span>
+            <span class="repo-badge">Public</span>
+          </div>
+          <p class="repo-desc" data-gh="description">A library dedicated to setup, skills and architecture for advanced autonomous inboxes led by AWS SES and Cloudflare for cheap, scalable, business emails.</p>
+          <pre class="term"><span class="c"># clone and run the gate tests</span>
+git clone https://github.com/WeaveITMeta/Amail-Automation-Setup
+cd Amail-Automation-Setup
+python3 -m unittest discover -s tests -v</pre>
+          <div class="repo-meta">
+            <span><i class="lang"></i> <span data-gh="language">Python</span></span>
+            <span>★ <span data-gh="stars">·</span></span>
+            <span>⑂ <span data-gh="forks">·</span></span>
+            <span>Updated <span data-gh="pushed">recently</span></span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section class="section join-section" id="join">
+      <div class="wrap join-card">
+        <img class="join-bot" src="/img/mascot.webp" width="720" height="720" loading="lazy" alt="The Amail mascot robot waving: an envelope-shaped head, glowing mint eyes, and an orange mail flag on its antenna.">
+        <div class="join-body">
+          <p class="eyebrow">Early access</p>
+          <h2>Get your crew first.</h2>
+          <p>Tell us which robot you need on day one. We'll invite the waitlist in order and wire that role up first.</p>
+          <form class="join join-stack" data-join data-source="footer" novalidate>
+            <label class="sr" for="join-email">Work email</label>
+            <input id="join-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required>
+            <label class="sr" for="join-role">First robot you need</label>
+            <select id="join-role" name="role">
+              <option value="">First robot you need (optional)</option>
+            </select>
+            <label class="sr" for="join-company">Company</label>
+            <input id="join-company" name="company" type="text" autocomplete="organization" placeholder="Company (optional)">
+            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-block" type="submit"><span>Join the waitlist</span></button>
+            <p class="join-msg" role="status" aria-live="polite"></p>
+          </form>
+          <p class="fine">We store your email to contact you about Amail early access. Nothing else, never sold. Ask and we delete it.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#top"><img src="/img/favicon-64.png" alt="" width="28" height="28"><span>Amail</span></a>
+      <p>The future of work email is a crew of agents and you. © <span data-year>2026</span> Amail.World</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/mcp">MCP pipelines</a>
+        <a href="https://github.com/WeaveITMeta/Amail-Automation-Setup" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+
+  <template id="crew-card">
+    <li class="bot">
+      <div class="bot-art"><img loading="lazy" width="640" height="640" alt=""></div>
+      <div class="bot-body">
+        <p class="bot-addr"></p>
+        <h3 class="bot-title"></h3>
+        <p class="bot-job"></p>
+        <p class="bot-kit"></p>
+      </div>
+    </li>
+  </template>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
