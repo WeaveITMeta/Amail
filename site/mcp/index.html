@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCP pipelines</title>
+  <meta name="description" content="How agents use MCP tools to connect business systems, coordinate work across a pipeline, keep a durable record of each step, and offer human review as a configurable quality gate.">
+  <link rel="canonical" href="https://amail.world/mcp">
+  <meta name="theme-color" content="#1c2340">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://amail.world/mcp">
+  <meta property="og:title" content="MCP pipelines">
+  <meta property="og:description" content="Agents connect the business tools you attach over MCP, hand work from step to step, keep a record of every call, and can pause for a person at the checkpoints you choose.">
+  <meta property="og:image" content="https://amail.world/img/og.jpg">
+  <meta property="og:image:alt" content="A team of envelope-headed robots working a mail-room pipeline.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MCP pipelines">
+  <meta name="twitter:description" content="Agents connect the business tools you attach over MCP, hand work from step to step, keep a record of every call, and can pause for a person at the checkpoints you choose.">
+  <meta name="twitter:image" content="https://amail.world/img/og.jpg">
+  <link rel="icon" type="image/png" href="/img/favicon-64.png">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#pipeline">Skip to the pipeline</a>
+
+  <header class="nav" id="top">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/" aria-label="Amail home">
+        <img src="/img/favicon-64.png" alt="" width="36" height="36">
+        <span>Amail</span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="/#crew">The crew</a>
+        <a href="/#how">How it works</a>
+        <a href="/#safe">Safety</a>
+        <a href="/mcp" aria-current="page">Pipelines</a>
+        <a href="/#github">Open source</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="gh-pill" href="https://github.com/WeaveITMeta/Amail-Automation-Setup" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          <span>Star</span><span class="gh-stars" data-gh="stars">·</span>
+        </a>
+        <a class="btn btn-small" href="/#join">Join waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="pipeline">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> MCP pipelines</p>
+          <h1>Agents carry the work from tool to finished record.</h1>
+          <p class="lede">Connect the business tools you choose over MCP. A crew of agents moves the job across steps, writes down each call, and can ask a person to check the steps you mark.</p>
+          <p class="social-proof"><a href="/">Back to the Amail homepage</a></p>
+        </div>
+        <figure class="hero-art">
+          <img src="/img/hero.webp"
+               srcset="/img/hero-1200.webp 1200w, /img/hero.webp 2000w"
+               sizes="(min-width: 1000px) 62vw, 100vw"
+               width="2000" height="1116"
+               alt="A team of cute envelope-headed robots working in a mail room, with envelopes traveling through pipes overhead.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="steps">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">The process</p>
+          <h2>Four parts of a complete pipeline.</h2>
+          <p>This is the general mechanism. An agent reaches real systems through the Model Context Protocol, coordinates the steps of one job, and keeps a record that the next step can verify. A person can stand at a checkpoint you configure. The rest of the pipeline can run through.</p>
+        </header>
+
+        <ol class="flow">
+          <li>
+            <span class="flow-n">1</span>
+            <h3>Connect real tools</h3>
+            <p>An MCP server exposes tools with a name, the inputs they accept, and the result they return. You attach the servers that hold the work: mail, files, a calendar, a ledger, an issue tracker, or another system the job actually uses. The agent lists that set, then calls one tool to do one operation. The connection is the tool list you attached.</p>
+            <code>tools/list → tools/call</code>
+          </li>
+          <li>
+            <span class="flow-n">2</span>
+            <h3>Coordinate the steps</h3>
+            <p>A crew shares one job. One role classifies the incoming work, another gathers what the next action needs, another prepares the outcome. Each step receives the record of the steps before it, so the handoff is a written state, and the next agent continues that same job.</p>
+            <code>step record → next role</code>
+          </li>
+          <li>
+            <span class="flow-n">3</span>
+            <h3>Record and verify</h3>
+            <p>Every call writes a durable record: which tool ran, what it was given, and what came back. That record is the state of the run. A later step checks its inputs against the record before it continues, and a run that stops can resume from the last completed record.</p>
+            <code>tool, input, result</code>
+          </li>
+          <li>
+            <span class="flow-n">4</span>
+            <h3>A person at the checkpoints you choose</h3>
+            <p>Human review is a quality gate you attach to a checkpoint. The checkpoint has a concrete artifact: a reply ready to send, a ledger entry, a filing, or another action you want a person to see. With the gate set, the pipeline pauses, the person checks that artifact, and the run continues or returns to the previous step. Leave the gate unset and that step completes with the rest of the pipeline.</p>
+            <code>checkpoint: review</code>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="gates">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">Quality gates</p>
+          <h2>Review is available where the outcome deserves it.</h2>
+          <p>End-to-end automation stays available. You station a person on the checkpoints that matter for that pipeline, and the other steps finish on their own. On the mail path, approval before a send is one gate of this kind: it checks the exact draft, and the steps around it still do their work.</p>
+        </header>
+        <ul class="checks">
+          <li><strong>Tools you attach.</strong> The agent calls the MCP tools on the servers you connect for that job.</li>
+          <li><strong>A crew, one job.</strong> Each role reads the prior record and adds the next step.</li>
+          <li><strong>A record per call.</strong> Tool name, inputs, and result stay with the run so a later step can verify them.</li>
+          <li><strong>A gate you can set.</strong> Turn review on for a checkpoint, or leave that step in the automated path.</li>
+          <li><strong>A finished outcome.</strong> The pipeline ends with the record of what ran and, where a gate was set, who released it.</li>
+        </ul>
+        <p class="crew-foot"><a href="/#how">See the mail path, from MX record to reply →</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="/"><img src="/img/favicon-64.png" alt="" width="28" height="28"><span>Amail</span></a>
+      <p>The future of work email is a crew of agents and you. © <span data-year>2026</span> Amail.World</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/mcp" aria-current="page">MCP pipelines</a>
+        <a href="https://github.com/WeaveITMeta/Amail-Automation-Setup" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
