@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>A robot for every inbox on your domain.</title>
-  <meta name="description" content="Amail gives every company address its own AI role agent. hello@, sales@, support@, legal@: each robot triages, drafts, and waits for a human to approve. Built on Amazon SES and Cloudflare. Join the waitlist.">
+  <meta name="description" content="Amail gives every company address its own AI role agent. hello@, sales@, support@, legal@: each robot triages and drafts. Human review is a gate you configure. Built on Amazon SES and Cloudflare. Join the waitlist.">
   <link rel="canonical" href="https://amail.world/">
   <meta name="theme-color" content="#1c2340">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://amail.world/">
   <meta property="og:title" content="A robot for every inbox on your domain.">
-  <meta property="og:description" content="Role agents for hello@, sales@, support@ and 37 more. They triage and draft. A human approves. Join the waitlist.">
+  <meta property="og:description" content="Role agents for hello@, sales@, support@ and 37 more. They triage and draft. Human review is a gate you configure. Join the waitlist.">
   <meta property="og:image" content="https://amail.world/img/og.jpg">
   <meta property="og:image:alt" content="A robot for every inbox on your domain.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="A robot for every inbox on your domain.">
-  <meta name="twitter:description" content="Role agents for hello@, sales@, support@ and 37 more. They triage and draft. A human approves. Join the waitlist.">
+  <meta name="twitter:description" content="Role agents for hello@, sales@, support@ and 37 more. They triage and draft. Human review is a gate you configure. Join the waitlist.">
   <meta name="twitter:image" content="https://amail.world/img/og.jpg">
   <meta name="twitter:image:alt" content="A robot for every inbox on your domain.">
   <link rel="icon" type="image/png" href="/img/favicon-64.png">
@@ -62,7 +62,7 @@
           <p class="lede">
             <strong>hello@</strong>, <strong>sales@</strong>, <strong>support@</strong>, <strong>legal@</strong>.
             Amail staffs each address with its own role agent. It reads, triages, and drafts.
-            <em>You</em> approve before anything leaves the building.
+            You choose the sends a person reviews.
           </p>
 
           <form class="join" data-join data-source="hero" novalidate>
@@ -74,7 +74,10 @@
             <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
             <p class="join-msg" role="status" aria-live="polite"></p>
           </form>
-          <p class="social-proof"><span class="count" data-count>Be one of the first</span> on the list. No spam; one email when your crew is ready.</p>
+          <p class="social-proof"><span class="count" data-count>Be one of the first</span> on the list. One early-access invitation when your crew is ready.</p>
+          <p class="fine">This form sends your email address so we can send the early-access invitation you request. Role and company are sent only if you fill them in. That invitation is the processing this signup is for. It is not a separate product newsletter, and this form does not opt you into one. Reply to the invitation if you want no further messages. This page does not publish a separate address for that request, and it does not set a retention date.</p>
+          <p class="approval-note">The library default asks for human approval before an external send, and its kill switch starts on. Hello has a separate example rule for one first reply to a new inquiry or a routing message. That rule ships disabled, and the other roles in that example stay on human approval. This site does not claim the Hello exception is enabled on amail.world.</p>
+          <p class="platform-note">Amail is used on Windows, macOS, and Linux through any compatible client, including NOVA and Grok Bot.</p>
         </div>
         <figure class="hero-art">
           <img src="/img/hero.webp"
@@ -120,7 +123,7 @@
       <div class="wrap">
         <header class="section-head">
           <p class="eyebrow">How it works</p>
-          <h2>From MX record to approved reply, in six steps.</h2>
+          <h2>From MX record to a reply, in six steps.</h2>
           <p>The same reference path the open-source library documents. Durable at every hop, so a crashed worker never sends twice. Agents can also run a complete business pipeline by connecting tools over MCP, with durable records and a human quality gate at the checkpoints you configure. <a href="/mcp">Read how MCP pipelines work</a>.</p>
         </header>
 
@@ -128,7 +131,7 @@
           <li>
             <span class="flow-n">1</span>
             <h3>Mail lands at SES</h3>
-            <p>Your MX points at Amazon SES inbound. Cloudflare hosts the DNS: MX, Easy DKIM, MAIL FROM, and DMARC.</p>
+            <p>Your MX points at Amazon SES inbound. Cloudflare hosts the DNS: MX, Easy DKIM, MAIL FROM, and DMARC. The DNS records in this path are the reference setup for a domain you host. They are not a claim that amail.world's live records are authenticated or compliant.</p>
             <code>MX 10 inbound-smtp.&lt;region&gt;.amazonaws.com</code>
           </li>
           <li>
@@ -157,9 +160,9 @@
           </li>
           <li>
             <span class="flow-n">6</span>
-            <h3>A human says go</h3>
-            <p>You approve the exact rendered email. A separate send identity calls SES. Threading headers stay intact.</p>
-            <code>approved → ses:SendEmail</code>
+            <h3>Review where you set a gate</h3>
+            <p>When that gate is on, you approve the exact rendered email and a separate send identity calls SES. The Hello first-reply example is the narrow path that can send without that approval, and only if an owner enables the rule that ships disabled. Threading headers stay intact.</p>
+            <code>gate on → approval</code>
           </li>
         </ol>
       </div>
@@ -179,7 +182,7 @@
           </header>
           <ul class="checks">
             <li><strong>Kill switch ships on.</strong> Flip it and every send path stops, including ones a person already approved.</li>
-            <li><strong>Human approval by default.</strong> Approval binds to a SHA-256 digest of the exact message. A chat that says "approved" sends nothing.</li>
+            <li><strong>Human review is configurable.</strong> The library default binds an approval to a SHA-256 digest of the exact message. A chat that says "approved" sends nothing. The Hello first-reply example stays off until an owner enables that disabled rule.</li>
             <li><strong>Split identities.</strong> The robot can read one object. It cannot call SES send. A prompt injection has nothing to steal.</li>
             <li><strong>Mail is data, not orders.</strong> Instructions inside an email never become policy.</li>
             <li><strong>Suppression first.</strong> Opt-outs, bounces, tests, and no-reply senders are dropped before any draft is written.</li>
@@ -243,7 +246,7 @@ python3 -m unittest discover -s tests -v</pre>
             <button class="btn btn-block" type="submit"><span>Join the waitlist</span></button>
             <p class="join-msg" role="status" aria-live="polite"></p>
           </form>
-          <p class="fine">We store your email to contact you about Amail early access. Nothing else, never sold. Ask and we delete it.</p>
+          <p class="fine">This form sends your email address so we can send the early-access invitation you request. Role and company are sent only if you fill them in. That invitation is the processing this signup is for. It is not a separate product newsletter, and this form does not opt you into one. Reply to the invitation if you want no further messages. This page does not publish a separate address for that request, and it does not set a retention date.</p>
         </div>
       </div>
     </section>
@@ -272,6 +275,6 @@ python3 -m unittest discover -s tests -v</pre>
     </li>
   </template>
 
-  <script src="/app.js" defer></script>
+  <script type="module" src="/app.js"></script>
 </body>
 </html>
