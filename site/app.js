@@ -1,4 +1,6 @@
 // amail.world front end: crew grid, waitlist forms, live counts, GitHub stats.
+import { buildWaitlistPayload } from "./waitlist.mjs";
+
 (() => {
   "use strict";
 
@@ -88,13 +90,13 @@
         email.focus();
         return;
       }
-      const payload = {
+      const payload = buildWaitlistPayload({
         email: value,
         role: form.querySelector("[name=role]")?.value || "",
         company: form.querySelector("[name=company]")?.value || "",
         website: form.querySelector("[name=website]")?.value || "",
         source: form.dataset.source || "",
-      };
+      });
       btn.disabled = true;
       form.classList.add("busy");
       say("Clocking you in…", "");
@@ -108,7 +110,10 @@
         if (!res.ok || !data.ok) throw new Error(data.error || "Something went wrong. Try again.");
         setCount(data.count);
         const where = data.position ? ` You're #${nf.format(data.position)} in line.` : "";
-        say(data.already ? `You're already on the list.${where}` : `You're in!${where} Your crew will email you.`, "ok");
+        const invited = data.already
+          ? `This address is already on the list for the early-access invitation.${where}`
+          : `You're in.${where} We'll email that invitation to this address.`;
+        say(invited, "ok");
         form.classList.add("done");
         email.value = "";
       } catch (err) {
