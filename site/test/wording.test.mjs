@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { FOOTER_CLAIM, PLATFORM_LINE, TAGLINE, WAITLIST_NOTICE } from "../copy.mjs";
+import { APPROVAL_NOTE, CODE_VS_DEPLOYED, DNS_NOTE, FOOTER_CLAIM, PLATFORM_LINE, TAGLINE, WAITLIST_NOTICE } from "../copy.mjs";
 import { buildWaitlistPayload } from "../waitlist.mjs";
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), "utf8");
@@ -33,16 +33,44 @@ test("share card and footer stay exact", () => {
   assert.equal(TAGLINE, "A robot for every inbox on your domain.");
 });
 
-test("platform wording is universal and does not claim binaries or test runs", () => {
+test("platform wording names clients and does not claim a native app", () => {
   for (const [name, text] of publicCopies) {
     assert.ok(text.includes(PLATFORM_LINE), `${name} missing platform line`);
     assert.equal(/linux-only|only linux|linux only/i.test(text), false, name);
     assert.equal(/grok bot only|only grok|exclusively grok|exclusive to grok/i.test(text), false, name);
+    assert.equal(/universal email application|native app|app store|download the app/i.test(text), false, name);
     assert.equal(/prebuilt installer/i.test(text), false, name);
     assert.equal(/tested binary|platform binaries|tested on windows|tested on macos|tested on linux/i.test(text), false, name);
   }
   assert.match(PLATFORM_LINE, /Windows, macOS, and Linux/);
-  assert.match(PLATFORM_LINE, /NOVA, Grok Bot, and any compatible client/);
+  assert.match(PLATFORM_LINE, /any compatible client, including NOVA and Grok Bot/);
+});
+
+test("approval is configurable and Hello first-reply ships disabled", () => {
+  assert.equal(indexHtml.includes(APPROVAL_NOTE), true);
+  assert.equal(indexHtml.includes("approve before anything leaves"), false);
+  assert.equal(indexHtml.includes("waits for a human to approve"), false);
+  assert.equal(indexHtml.includes("A human approves."), false);
+  assert.match(indexHtml, /You choose the sends a person reviews/);
+  assert.match(indexHtml, /When that gate is on, you approve the exact rendered email/);
+  assert.match(indexHtml, /rule that ships disabled/);
+  assert.match(mcpHtml, /example ships disabled/);
+  assert.match(mcpHtml, /checkpoint you configure/);
+  assert.match(mcpHtml, /A gate you can set/);
+  assert.match(mcpHtml, /Leave the gate unset and that step completes with the rest of the pipeline/);
+});
+
+test("site does not call amail.world DNS authenticated or compliant", () => {
+  assert.equal(indexHtml.includes(DNS_NOTE), true);
+  assert.equal(/amail\.world's live records are authenticated or compliant/.test(indexHtml), true);
+  assert.equal(/amail\.world (is|has) (fully )?(authenticated|compliant)/i.test(indexHtml), false);
+});
+
+test("wording checks describe repository text, not the live deploy", () => {
+  assert.equal(
+    CODE_VS_DEPLOYED,
+    "Wording tests read this repository only. They do not fetch amail.world and they do not show that the live site is serving this commit.",
+  );
 });
 
 test("waitlist notice separates the invitation from marketing and avoids invented contacts", () => {

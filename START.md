@@ -38,7 +38,7 @@ This guide walks you through setting up Amail from scratch on your own server.
 - **Storage**: 10GB+ for database and attachments
 - **OS**: Windows, Linux, or macOS
 
-Amail is a universal email application for Windows, macOS, and Linux. It serves NOVA, Grok Bot, and any compatible client. The steps below build from source on the system you choose.
+Amail is used on Windows, macOS, and Linux through any compatible client, including NOVA and Grok Bot. The steps below build from source on the system you choose.
 
 ---
 

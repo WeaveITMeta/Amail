@@ -147,7 +147,7 @@ code, pre { font-family: var(--font-mono); }
 .join-msg[data-kind="error"] { color: var(--error); }
 .join.busy .btn span { opacity: .75; }
 .social-proof { margin-top: 4px; color: var(--ink-soft); font-size: .95rem; }
-.platform-note { margin-top: 16px; max-width: 42rem; color: var(--ink-soft); font-size: .98rem; }
+.platform-note, .approval-note { margin-top: 16px; max-width: 42rem; color: var(--ink-soft); font-size: .98rem; }
 .social-proof a { color: var(--orange-deep); font-weight: 600; text-decoration: none; }
 .social-proof a:hover { text-decoration: underline; }
 .count { font-weight: 600; color: var(--navy); }

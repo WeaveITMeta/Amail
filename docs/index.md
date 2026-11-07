@@ -4,7 +4,7 @@
 
 Welcome to the Amail documentation. Amail is a complete, self-hosted email server with AI-powered auto-reply, unlimited domains, and P2P file transfers.
 
-Amail is a universal email application for Windows, macOS, and Linux. It serves NOVA, Grok Bot, and any compatible client. Build from source for the system you run.
+Amail is used on Windows, macOS, and Linux through any compatible client, including NOVA and Grok Bot. Build from source for the system you run.
 
 ---
 
